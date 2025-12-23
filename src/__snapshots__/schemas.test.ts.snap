@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TagsSchema > extracting values 1`] = `
+{
+  "_id": "Option",
+  "_tag": "Some",
+  "value": {
+    "_tag": "badge-info",
+    "value": "",
+  },
+}
+`;
+
+exports[`TagsSchema > failing 1`] = `
+{
+  "_id": "Option",
+  "_tag": "None",
+}
+`;
+
+exports[`TagsSchema > parses values 1`] = `
+[
+  {
+    "_tag": "badge-info",
+    "value": "",
+  },
+  "badges=broadcaster/1",
+  "client-nonce=28e05b1c83f1e916ca1710c44b014515",
+  "color=#0000FF",
+  "display-name=foofoo",
+  "emotes=62835:0-10",
+  "first-msg=0",
+  "flags=",
+  "id=f80a19d6-e35a-4273-82d0-cd87f614e767",
+  "mod=0",
+  "room-id=713936733",
+  "subscriber=0",
+  "tmi-sent-ts=1642696567751",
+  "turbo=0",
+  "user-id=713936733",
+  "user-type=",
+]
+`;
