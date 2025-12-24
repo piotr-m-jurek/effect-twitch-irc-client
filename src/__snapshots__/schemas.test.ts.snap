@@ -24,20 +24,65 @@ exports[`TagsSchema > parses values 1`] = `
     "_tag": "badge-info",
     "value": "",
   },
-  "badges=broadcaster/1",
-  "client-nonce=28e05b1c83f1e916ca1710c44b014515",
-  "color=#0000FF",
-  "display-name=foofoo",
-  "emotes=62835:0-10",
-  "first-msg=0",
-  "flags=",
-  "id=f80a19d6-e35a-4273-82d0-cd87f614e767",
-  "mod=0",
-  "room-id=713936733",
-  "subscriber=0",
-  "tmi-sent-ts=1642696567751",
-  "turbo=0",
-  "user-id=713936733",
-  "user-type=",
+  {
+    "_tag": "badges",
+    "value": "broadcaster/1",
+  },
+  {
+    "_tag": "client-nonce",
+    "value": "28e05b1c83f1e916ca1710c44b014515",
+  },
+  {
+    "_tag": "color",
+    "value": "#0000FF",
+  },
+  {
+    "_tag": "display-name",
+    "value": "foofoo",
+  },
+  {
+    "_tag": "emotes",
+    "value": "62835:0-10",
+  },
+  {
+    "_tag": "first-msg",
+    "value": "0",
+  },
+  {
+    "_tag": "flags",
+    "value": "",
+  },
+  {
+    "_tag": "id",
+    "value": "f80a19d6-e35a-4273-82d0-cd87f614e767",
+  },
+  {
+    "_tag": "mod",
+    "value": "0",
+  },
+  {
+    "_tag": "room-id",
+    "value": "713936733",
+  },
+  {
+    "_tag": "subscriber",
+    "value": "0",
+  },
+  {
+    "_tag": "tmi-sent-ts",
+    "value": "1642696567751",
+  },
+  {
+    "_tag": "turbo",
+    "value": "0",
+  },
+  {
+    "_tag": "user-id",
+    "value": "713936733",
+  },
+  {
+    "_tag": "user-type",
+    "value": "",
+  },
 ]
 `;

@@ -1,9 +1,9 @@
 import * as Effect from "effect"
 import * as Schema from "effect/Schema"
 
-const KVSchema = <Key extends string, V>(
+const KVSchema = <Key extends string, U>(
   key: Key,
-  valueSchema: Schema.Schema<V>
+  valueSchema: Schema.Schema<U>
 ) =>
   Effect.pipe(
     Schema.TemplateLiteralParser(
@@ -13,32 +13,52 @@ const KVSchema = <Key extends string, V>(
     Schema.transform(
       Schema.TaggedStruct(key, { value: valueSchema }),
       {
-        strict: false,
+        strict: true,
         decode: ([_tag, value]) => ({ _tag: key, value }) as const,
         encode: (v) => [`${key}=`, v.value] as const
       }
     )
   )
 
-// const BadgeInfoSchema = Effect.pipe(
-//   Schema.TemplateLiteralParser(
-//     Schema.Literal("badge-info="),
-//     Schema.String
-//   ),
-//   Schema.transform(
-//     Schema.TaggedStruct("BadgeInfo", { value: Schema.String }),
-//     {
-//       strict: true,
-//       decode: ([_tag, value]) => ({ _tag: "BadgeInfo" as const, value }) as const,
-//       encode: ({ value }) => ["badge-info=", value] as const
-//     }
-//   )
-// )
-
 export const BadgeInfoSchema = KVSchema("badge-info", Schema.String)
+export const BadgesSchema = KVSchema("badges", Schema.String)
+export const ClientNonce = KVSchema("client-nonce", Schema.String) // =2292959972d491fa6dcee93eaacc0d23;
+export const ColorSchema = KVSchema("color", Schema.String) // =#0000FF;
+export const DisplayNameSchema = KVSchema("display-name", Schema.String) // =higherorderfunctioning;
+export const EmotesSchema = KVSchema("emotes", Schema.String)
+export const FirstMsgSchema = KVSchema("first-msg", Schema.String) // =0;
+export const FlagsSchema = KVSchema("flags", Schema.String)
+export const IdSchema = KVSchema("id", Schema.String)
+export const ModSchema = KVSchema("mod", Schema.String)
+export const ReturningChatterSchema = KVSchema("returning-chatter", Schema.String) // =0;
+export const RoomIdSchema = KVSchema("room-id", Schema.String) // =56185732;
+export const SubscriberSchema = KVSchema("subscriber", Schema.String) // =0;
+export const TmiSentTsSchema = KVSchema("tmi-sent-ts", Schema.String) // =1765995309365;
+export const TurboSchema = KVSchema("turbo", Schema.String) // =0;
+export const UserIdSchema = KVSchema("user-id", Schema.String) // =56185732;
+export const UserTypeSchema = KVSchema("user-type", Schema.String) // =
 
 // TODO: better name ffs
-export const TagsUnionSchema = Schema.Union(BadgeInfoSchema, Schema.String)
+export const TagsUnionSchema = Schema.Union(
+  BadgeInfoSchema,
+  BadgesSchema,
+  ClientNonce,
+  ColorSchema,
+  DisplayNameSchema,
+  EmotesSchema,
+  FirstMsgSchema,
+  FlagsSchema,
+  IdSchema,
+  ModSchema,
+  ReturningChatterSchema,
+  RoomIdSchema,
+  SubscriberSchema,
+  TmiSentTsSchema,
+  TurboSchema,
+  UserIdSchema,
+  UserTypeSchema,
+  Schema.String
+)
 
 export const TagsSchema = Effect.pipe(
   Schema.String,
