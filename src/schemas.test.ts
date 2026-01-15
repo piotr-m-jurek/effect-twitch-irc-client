@@ -1,9 +1,9 @@
 import { describe, expect, it } from "@effect/vitest"
-import { pipe } from "effect"
+import { Console, pipe } from "effect"
 import * as Array from "effect/Array"
 import * as Effect from "effect/Effect"
 import * as Schema from "effect/Schema"
-import { BadgeInfoSchema, PingSchema, PrivateMessageSchema, TagsSchema } from "./schemas.js"
+import { BadgeInfoSchema, BadgesSchema, PingSchema, PrivateMessageSchema, TagsSchema } from "./schemas.js"
 
 describe("PING Schema", () => {
   it("parses ping schema", () => {
@@ -46,17 +46,18 @@ describe("TagsSchema", () => {
     expect(result).toMatchSnapshot()
   })
 
-  it.effect("extracting values", () =>
+  it.effect.only("extracting values", () =>
     Effect.gen(function*() {
       const input =
         "@badge-info=;badges=broadcaster/1;client-nonce=28e05b1c83f1e916ca1710c44b014515;color=#0000FF;display-name=foofoo;emotes=62835:0-10;first-msg=0;flags=;id=f80a19d6-e35a-4273-82d0-cd87f614e767;mod=0;room-id=713936733;subscriber=0;tmi-sent-ts=1642696567751;turbo=0;user-id=713936733;user-type="
       const parseResult = yield* Schema.decodeUnknown(TagsSchema)(input)
+
       const result = pipe(
         parseResult,
-        Array.filter(Schema.is(BadgeInfoSchema)),
+        Array.filter(Schema.is(BadgesSchema)),
         Array.head
       )
-      yield* Effect.log(result)
+      yield* Console.log("\n\n HERE IS THE RESULT:", result)
       expect(result).toMatchSnapshot()
     }))
 

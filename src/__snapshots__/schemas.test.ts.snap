@@ -3,11 +3,7 @@
 exports[`TagsSchema > extracting values 1`] = `
 {
   "_id": "Option",
-  "_tag": "Some",
-  "value": {
-    "_tag": "badge-info",
-    "value": "",
-  },
+  "_tag": "None",
 }
 `;
 
@@ -46,7 +42,7 @@ exports[`TagsSchema > parses values 1`] = `
   },
   {
     "_tag": "first-msg",
-    "value": "0",
+    "value": 0,
   },
   {
     "_tag": "flags",
